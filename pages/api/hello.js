@@ -1,5 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { QuirrelClient } from "quirrel";
 
 export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+  const client = new QuirrelClient({
+    async handler() {},
+    route: "/api/hello",
+  });
+
+  res.status(200).json({ baseUrl: client.baseUrl, route: client.route });
 }
